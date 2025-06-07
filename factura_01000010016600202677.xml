@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FacturaElectronica xmlns="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.4/facturaElectronica" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.4/facturaElectronica https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.4/facturaElectronica.xsd">
+  <Clave>506070525000123456789016752778724782786597544099545</Clave>
+  <NumeroConsecutivo>01000010016600202677</NumeroConsecutivo>
+  <FechaEmision>2025-05-07T22:17:12.846Z</FechaEmision>
+  <CodigoActividad>741203</CodigoActividad>
+  <Emisor>
+    <Nombre>Innova &amp; Ai Group CR SRL</Nombre>
+    <Identificacion>
+      <Tipo>02</Tipo>
+      <Numero>3102928079</Numero>
+    </Identificacion>
+    <Ubicacion>
+      <Provincia>San José</Provincia>
+      <Canton>San José</Canton>
+      <Distrito>San Sebastian</Distrito>
+      <OtrasSenas>San Sebastian, San José, de la Iglesia Bautista 75 metros sur, 25 oeste, Avenida París</OtrasSenas>
+    </Ubicacion>
+    <Telefono>
+      <CodigoPais>506</CodigoPais>
+      <NumTelefono>88821455</NumTelefono>
+    </Telefono>
+    <CorreoElectronico>admin@innovaicr.com</CorreoElectronico>
+  </Emisor>
+  <DetalleServicio>
+    <LineaDetalle>
+      <NumeroLinea>1</NumeroLinea>
+      <CodigoCabys>8222100000000</CodigoCabys>
+      <Cantidad>1</Cantidad>
+      <UnidadMedida>Sp</UnidadMedida>
+      <Detalle>Servicios de contabilidad</Detalle>
+      <PrecioUnitario>100000.00</PrecioUnitario>
+      <MontoTotal>100000.00</MontoTotal>
+      <Descuento>
+        <MontoDescuento>10000.00</MontoDescuento>
+        <NaturalezaDescuento/>
+      </Descuento>
+      <SubTotal>90000.00</SubTotal>
+      <Impuesto>
+        <Codigo>01</Codigo>
+        <CodigoTarifa>08</CodigoTarifa>
+        <Tarifa>13.00</Tarifa>
+        <Monto>11700.00</Monto>
+      </Impuesto>
+      <ImpuestoNeto>11700.00</ImpuestoNeto>
+      <MontoTotalLinea>101700.00</MontoTotalLinea>
+    </LineaDetalle>
+    <LineaDetalle>
+      <NumeroLinea>2</NumeroLinea>
+      <CodigoCabys>7159100000000</CodigoCabys>
+      <Cantidad>1</Cantidad>
+      <UnidadMedida>Sp</UnidadMedida>
+      <Detalle>Servicios de consultoría financiera</Detalle>
+      <PrecioUnitario>50000.00</PrecioUnitario>
+      <MontoTotal>50000.00</MontoTotal>
+      <Descuento>
+        <MontoDescuento>0.00</MontoDescuento>
+        <NaturalezaDescuento/>
+      </Descuento>
+      <SubTotal>50000.00</SubTotal>
+      <Impuesto>
+        <Codigo>01</Codigo>
+        <CodigoTarifa>08</CodigoTarifa>
+        <Tarifa>13.00</Tarifa>
+        <Monto>6500.00</Monto>
+      </Impuesto>
+      <ImpuestoNeto>6500.00</ImpuestoNeto>
+      <MontoTotalLinea>56500.00</MontoTotalLinea>
+    </LineaDetalle>
+  </DetalleServicio>
+  <ResumenFactura>
+    <CodigoMoneda>CRC</CodigoMoneda>
+    <TotalServGravados>140000.00</TotalServGravados>
+    <TotalServExentos>0.00</TotalServExentos>
+    <TotalMercGravada>0.00</TotalMercGravada>
+    <TotalMercExenta>0.00</TotalMercExenta>
+    <TotalGravado>140000.00</TotalGravado>
+    <TotalExento>0.00</TotalExento>
+    <TotalVenta>150000.00</TotalVenta>
+    <TotalDescuentos>10000.00</TotalDescuentos>
+    <TotalVentaNeta>140000.00</TotalVentaNeta>
+    <TotalImpuesto>18200.00</TotalImpuesto>
+    <TotalComprobante>158200.00</TotalComprobante>
+  </ResumenFactura>
+  <MedioPago>01</MedioPago>
+</FacturaElectronica>

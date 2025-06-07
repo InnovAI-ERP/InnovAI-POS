@@ -1,0 +1,4 @@
+# Directorio para certificados
+
+Este directorio almacena los certificados .p12 para la conexión con Hacienda.
+Los archivos de este directorio no deben ser incluidos en el control de versiones por motivos de seguridad.

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FacturaElectronica xmlns="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.4/facturaElectronica" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xsi:schemaLocation="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.4/facturaElectronica schema.xsd">
+  <Clave>50602062510031029280790101002000000000001496331478</Clave>
+  <ProveedorSistemas>3102928079</ProveedorSistemas>
+  <CodigoActividadEmisor>741203</CodigoActividadEmisor>
+  <CodigoActividadReceptor>741203</CodigoActividadReceptor>
+  <NumeroConsecutivo>01010020000000000014</NumeroConsecutivo>
+  <FechaEmision>2025-06-02T20:19:48.763Z</FechaEmision>
+  <Emisor>
+    <Nombre>INNOVA &amp; AI GROUP CR SOCIEDAD DE RESPONSABILIDAD LIMITADA</Nombre>
+    <Identificacion>
+      <Tipo>02</Tipo>
+      <Numero>3102928079</Numero>
+    </Identificacion>
+    <NombreComercial>Grupo InnovAI</NombreComercial>
+    <Ubicacion>
+      <Provincia>San José</Provincia>
+      <Canton>San José</Canton>
+      <Distrito>San Sebastian</Distrito>
+      <OtrasSenas>San Sebastian, San José, de la Iglesia Bautista 75 metros sur, 25 oeste, Avenida París</OtrasSenas>
+    </Ubicacion>
+    <Telefono>
+      <CodigoPais>506</CodigoPais>
+      <NumTelefono>88821455</NumTelefono>
+    </Telefono>
+    <CorreoElectronico>admin@innovaicr.com</CorreoElectronico>
+  </Emisor>
+  <Receptor>
+    <Nombre>KEVIN ALONSO UMAÑA TREJOS</Nombre>
+    <Identificacion>
+      <Tipo>01</Tipo>
+      <Numero>115550190</Numero>
+    </Identificacion>
+    <Ubicacion>
+      <Provincia>San José</Provincia>
+      <Canton>Vásquez de Coronado</Canton>
+      <Distrito>Patalillo</Distrito>
+      <OtrasSenas>Del Salón El Pará 300 metros noreste, 75 al sur, calle sin salida</OtrasSenas>
+    </Ubicacion>
+    <CorreoElectronico>kevin.umana.conta@gmail.com</CorreoElectronico>
+  </Receptor>
+  <CondicionVenta>01</CondicionVenta>
+  <DetalleServicio>
+    <LineaDetalle>
+      <NumeroLinea>1</NumeroLinea>
+      <CodigoCABYS>3331100010000</CodigoCABYS>
+      <CodigoComercial>
+        <Tipo>01</Tipo>
+        <Codigo>N/A</Codigo>
+      </CodigoComercial>
+      <Cantidad>10</Cantidad>
+      <UnidadMedida>L</UnidadMedida>
+      <TipoTransaccion>01</TipoTransaccion>
+      <Detalle>Gasolina súper (RON 95)</Detalle>
+      <PrecioUnitario>530.20000</PrecioUnitario>
+      <MontoTotal>5302.00000</MontoTotal>
+      <SubTotal>5302.00000</SubTotal>
+      <Impuesto>
+        <Codigo>01</Codigo>
+        <CodigoTarifa>08</CodigoTarifa>
+        <Tarifa>0.00</Tarifa>
+        <Monto>0.00000</Monto>
+      </Impuesto>
+      <ImpuestoNeto>0.00000</ImpuestoNeto>
+      <MontoTotalLinea>5302.00000</MontoTotalLinea>
+    </LineaDetalle>
+  </DetalleServicio>
+  <ResumenFactura>
+    <CodigoTipoMoneda>
+      <CodigoMoneda>CRC</CodigoMoneda>
+      <TipoCambio>1.00000</TipoCambio>
+    </CodigoTipoMoneda>
+    <TotalServGravados>5302.00</TotalServGravados>
+    <TotalServExentos>0.00</TotalServExentos>
+    <TotalServExonerado>0.00</TotalServExonerado>
+    <TotalServNoSujeto>0.00</TotalServNoSujeto>
+    <TotalMercanciasGravadas>0.00</TotalMercanciasGravadas>
+    <TotalMercanciasExentas>0.00</TotalMercanciasExentas>
+    <TotalMercExonerada>0.00</TotalMercExonerada>
+    <TotalMercNoSujeta>0.00</TotalMercNoSujeta>
+    <TotalGravado>5302.00</TotalGravado>
+    <TotalExento>0.00</TotalExento>
+    <TotalExonerado>0.00</TotalExonerado>
+    <TotalNoSujeto>0.00</TotalNoSujeto>
+    <TotalVenta>5302.00</TotalVenta>
+    <TotalDescuentos>0.00</TotalDescuentos>
+    <TotalVentaNeta>5302.00</TotalVentaNeta>
+    <TotalImpuesto>0.00</TotalImpuesto>
+    <TotalComprobante>5502.00</TotalComprobante>
+  </ResumenFactura>
+  <MedioPago>
+    <TipoMedioPago>01</TipoMedioPago>
+  </MedioPago>
+</FacturaElectronica>

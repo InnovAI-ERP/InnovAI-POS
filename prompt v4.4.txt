@@ -1,0 +1,33 @@
+Si, de hecho vamos a realizar un cambio importante.
+Tengo una referencia de la versión 4.4 de facturación electrónica, está referencia @xml_factura_electronicav4.4.xml  es un ejemplo de como se deben ver los campos requisito indispensable para la aprobación de las facturas y nos da mayor visibilidad de todos los datos por lo que nos podría ayudar este .xml completo para que los datos de la base de datos también sean más robustos.
+Necesito que adaptes la factura .xml actual a los requerimientos (cada campo) que se observa en el ejemplo de @xml_factura_electronicav4.4.xml de esta manera te doy algunos datos para que los completes que son obligatorios, los demás te indicaré los detalles o pormenores que debes considerar al incluir esos datos desde el formulario de "Crear Factura" para tomar los datos adecuados.
+1. 
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with ReactJS (https://reactjs.org/link/react-devtools) -->
+<FacturaElectronica xmlns="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.4/facturaElectronica" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xsi:schemaLocation="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.4/facturaElectronica schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Clave> clavenumerica ej. 506...11010897744398757674213859650</Clave> //
+  <ProveedorSistemas>3102928079</ProveedorSistemas> //Se debe indicar el número de cedula de identificación del proveedor de sistemas que esté utilizando para la emisión de comprobantes electrónicos.
+  <CodigoActividadEmisor>741203</CodigoActividadEmisor> //Se debe de indicar el código de la actividad económica inscrita a la cual corresponde el comprobante que se está generando.
+  <CodigoActividadReceptor> economic_activity_code </CodigoActividadReceptor>  //Se debe de indicar el código de la actividad económica inscrita del receptor 
+<NumeroConsecutivo> id </NumeroConsecutivo>
+  <FechaEmision>2006-10-03T12:12:35.32</FechaEmision>
+  <Emisor>
+    <Nombre>string</Nombre>
+    <Identificacion>
+      <Tipo>03</Tipo>
+      <Numero>9497932704</Numero>
+    </Identificacion>
+    <Registrofiscal8707>string</Registrofiscal8707> //Campo condicional. Se convierte en carácter obligatorio cuando se estén facturando códigos CAByS de bebidas alcohólicas según la Ley 8707.
+    <NombreComercial>string</NombreComercial>
+...otros que se mantienen igual
+        </CodigoComercial>
+      <Cantidad>-4097919.765</Cantidad>
+      <UnidadMedida>ej. W/(m²·sr)</UnidadMedida>
+      <TipoTransaccion>ej. 06</TipoTransaccion> //Este campo se utilizará para identificar el tipo de transacción que se realizará.
+      <UnidadMedidaComercial>string</UnidadMedidaComercial>
+      <Detalle>string</Detalle>
+      <NumeroVINoSerie>string</NumeroVINoSerie>
+      <NumeroVINoSerie>string</NumeroVINoSerie>
+      <NumeroVINoSerie>string</NumeroVINoSerie>
+      <RegistroMedicamento>string</RegistroMedicamento>
+      <FormaFarmaceutica>A</FormaFarmaceutica>

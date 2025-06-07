@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FacturaElectronica xmlns="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.4/facturaElectronica" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xsi:schemaLocation="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.4/facturaElectronica schema.xsd">
+  <Clave>506260525010031029280796940157653543280138560385129</Clave>
+  <ProveedorSistemas>3102928079</ProveedorSistemas>
+  <CodigoActividadEmisor>741203</CodigoActividadEmisor>
+  <NumeroConsecutivo>01000010018502681804</NumeroConsecutivo>
+  <FechaEmision>2025-05-27T01:50:54.216Z</FechaEmision>
+  <Emisor>
+    <Nombre>INNOVA &amp; AI GROUP CR SOCIEDAD DE RESPONSABILIDAD LIMITADA</Nombre>
+    <Identificacion>
+      <Tipo>02</Tipo>
+      <Numero>3102928079</Numero>
+    </Identificacion>
+    <NombreComercial>Grupo InnovAI</NombreComercial>
+    <Ubicacion>
+      <Provincia>San José</Provincia>
+      <Canton>San José</Canton>
+      <Distrito>San Sebastian</Distrito>
+      <OtrasSenas>San Sebastian, San José, de la Iglesia Bautista 75 metros sur, 25 oeste, Avenida París</OtrasSenas>
+    </Ubicacion>
+    <Telefono>
+      <CodigoPais>506</CodigoPais>
+      <NumTelefono>88821455</NumTelefono>
+    </Telefono>
+    <CorreoElectronico>admin@innovaicr.com</CorreoElectronico>
+  </Emisor>
+  <Receptor>
+    <Nombre>KEVIN ALONSO UMAÑA TREJOS</Nombre>
+    <Identificacion>
+      <Tipo>01</Tipo>
+      <Numero>115550190</Numero>
+    </Identificacion>
+    <CorreoElectronico>kevin.umana.conta@gmail.com</CorreoElectronico>
+  </Receptor>
+  <DetalleServicio>
+    <LineaDetalle>
+      <NumeroLinea>1</NumeroLinea>
+      <CodigoCABYS>3563801010120</CodigoCABYS>
+      <Cantidad>5</Cantidad>
+      <UnidadMedida>Unid</UnidadMedida>
+      <TipoTransaccion>01</TipoTransaccion>
+      <Detalle>Amoxicilina genéricos</Detalle>
+      <PrecioUnitario>2.48000</PrecioUnitario>
+      <MontoTotal>12.40000</MontoTotal>
+      <SubTotal>12.40000</SubTotal>
+      <Impuesto>
+        <Codigo>01</Codigo>
+        <CodigoTarifa>02</CodigoTarifa>
+        <Tarifa>2.00</Tarifa>
+        <Monto>0.24800</Monto>
+      </Impuesto>
+      <ImpuestoNeto>0.24800</ImpuestoNeto>
+      <MontoTotalLinea>12.64800</MontoTotalLinea>
+    </LineaDetalle>
+  </DetalleServicio>
+  <ResumenFactura>
+    <CodigoMoneda>USD</CodigoMoneda>
+    <TipoCambio>511.06000</TipoCambio>
+    <TotalServGravados>12.40</TotalServGravados>
+    <TotalServExentos>0.00</TotalServExentos>
+    <TotalMercGravada>0.00</TotalMercGravada>
+    <TotalMercExenta>0.00</TotalMercExenta>
+    <TotalGravado>12.40</TotalGravado>
+    <TotalExento>0.00</TotalExento>
+    <TotalVenta>12.40</TotalVenta>
+    <TotalDescuentos>0.00</TotalDescuentos>
+    <TotalVentaNeta>12.40</TotalVentaNeta>
+    <TotalImpuesto>0.25</TotalImpuesto>
+    <TotalComprobante>12.65</TotalComprobante>
+  </ResumenFactura>
+  <MedioPago>06</MedioPago>
+  <Otros>
+    <OtroTexto>testing farmaceutico</OtroTexto>
+  </Otros>
+</FacturaElectronica>

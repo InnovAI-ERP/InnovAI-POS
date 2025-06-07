@@ -1,0 +1,9 @@
+curl --location --request POST 'http://localhost/www/api.php' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'w=token' \
+--data-urlencode 'r=gettoken' \
+--data-urlencode 'grant_type=password' \
+--data-urlencode 'client_id=api-stag' \
+--data-urlencode 'username=cpf-07-0211-0230@stag.comprobanteselectronicos.go.cr' \
+--data-urlencode 'password=.HG@gK=]H>6M[^8ts/^*'

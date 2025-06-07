@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TiqueteElectronico xmlns="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.4/tiqueteElectronico" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xsi:schemaLocation="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.4/tiqueteElectronico schema.xsd">
+  <Clave>506270525040031029280798718811860542971818852775729</Clave>
+  <ProveedorSistemas>3102928079</ProveedorSistemas>
+  <CodigoActividadEmisor>741203</CodigoActividadEmisor>
+  <NumeroConsecutivo>04000010010497567287</NumeroConsecutivo>
+  <FechaEmision>2025-05-27T22:36:50.514Z</FechaEmision>
+  <Emisor>
+    <Nombre>INNOVA &amp; AI GROUP CR SOCIEDAD DE RESPONSABILIDAD LIMITADA</Nombre>
+    <Identificacion>
+      <Tipo>02</Tipo>
+      <Numero>3102928079</Numero>
+    </Identificacion>
+    <NombreComercial>Grupo InnovAI</NombreComercial>
+    <Ubicacion>
+      <Provincia>San José</Provincia>
+      <Canton>San José</Canton>
+      <Distrito>San Sebastian</Distrito>
+      <OtrasSenas>San Sebastian, San José, de la Iglesia Bautista 75 metros sur, 25 oeste, Avenida París</OtrasSenas>
+    </Ubicacion>
+    <Telefono>
+      <CodigoPais>506</CodigoPais>
+      <NumTelefono>88821455</NumTelefono>
+    </Telefono>
+    <CorreoElectronico>admin@innovaicr.com</CorreoElectronico>
+  </Emisor>
+  <Receptor>
+    <Nombre>Consumidor Final</Nombre>
+    <CorreoElectronico>admin@innovaicr.com</CorreoElectronico>
+  </Receptor>
+  <CondicionVenta>01</CondicionVenta>
+  <DetalleServicio>
+    <LineaDetalle>
+      <NumeroLinea>1</NumeroLinea>
+      <CodigoCABYS>3563801010120</CodigoCABYS>
+      <CodigoComercial>
+        <Tipo>01</Tipo>
+        <Codigo>N/A</Codigo>
+      </CodigoComercial>
+      <Cantidad>5</Cantidad>
+      <UnidadMedida>Unid</UnidadMedida>
+      <TipoTransaccion>01</TipoTransaccion>
+      <Detalle>Antibióticos genéricos</Detalle>
+      <FormaFarmaceutica>A</FormaFarmaceutica>
+      <RegistroMedicamento>N/A</RegistroMedicamento>
+      <PrecioUnitario>1265.00000</PrecioUnitario>
+      <MontoTotal>6325.00000</MontoTotal>
+      <SubTotal>6325.00000</SubTotal>
+      <Impuesto>
+        <Codigo>01</Codigo>
+        <CodigoTarifa>02</CodigoTarifa>
+        <Tarifa>2.00</Tarifa>
+        <Monto>126.50000</Monto>
+      </Impuesto>
+      <ImpuestoNeto>126.50000</ImpuestoNeto>
+      <MontoTotalLinea>6451.50000</MontoTotalLinea>
+    </LineaDetalle>
+  </DetalleServicio>
+  <ResumenFactura>
+    <CodigoTipoMoneda>
+      <CodigoMoneda>CRC</CodigoMoneda>
+      <TipoCambio>1.00000</TipoCambio>
+    </CodigoTipoMoneda>
+    <TotalServGravados>6325.00</TotalServGravados>
+    <TotalServExentos>0.00</TotalServExentos>
+    <TotalServExonerado>0.00</TotalServExonerado>
+    <TotalServNoSujeto>0.00</TotalServNoSujeto>
+    <TotalMercanciasGravadas>0.00</TotalMercanciasGravadas>
+    <TotalMercanciasExentas>0.00</TotalMercanciasExentas>
+    <TotalMercExonerada>0.00</TotalMercExonerada>
+    <TotalMercNoSujeta>0.00</TotalMercNoSujeta>
+    <TotalGravado>6325.00</TotalGravado>
+    <TotalExento>0.00</TotalExento>
+    <TotalExonerado>0.00</TotalExonerado>
+    <TotalNoSujeto>0.00</TotalNoSujeto>
+    <TotalVenta>6325.00</TotalVenta>
+    <TotalDescuentos>0.00</TotalDescuentos>
+    <TotalVentaNeta>6325.00</TotalVentaNeta>
+    <TotalDesgloseImpuesto>
+      <Codigo>01</Codigo>
+      <CodigoTarifaIVA>08</CodigoTarifaIVA>
+      <TotalMontoImpuesto>126.50</TotalMontoImpuesto>
+    </TotalDesgloseImpuesto>
+    <TotalImpuesto>126.50</TotalImpuesto>
+    <TotalComprobante>6451.50</TotalComprobante>
+  </ResumenFactura>
+  <MedioPago>
+    <TipoMedioPago>01</TipoMedioPago>
+  </MedioPago>
+  <Otros>
+    <OtroTexto>Testing Farmacia tiquete</OtroTexto>
+  </Otros>
+</TiqueteElectronico>

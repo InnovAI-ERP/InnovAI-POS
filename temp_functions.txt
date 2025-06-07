@@ -1,0 +1,8 @@
+199:  const handleCabysSearch = async () => {
+214:  const handleSelectCabys = (item: CabysItem) => {
+228:  const handleAddLine = () => {
+244:  const handleProductSelected = (product: any) => {
+260:  const handleNewProductSaved = (newProduct: any) => {
+267:  const handleRemoveLine = (index: number) => {
+277:  const handleProductSelected = (product: any) => {
+293:  const handleProductSelect = (product: any) => {

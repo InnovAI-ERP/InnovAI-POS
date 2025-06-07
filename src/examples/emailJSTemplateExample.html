@@ -1,0 +1,99 @@
+<!-- 
+Ejemplo de plantilla para EmailJS
+Esta plantilla se puede usar como base para crear una plantilla personalizada en EmailJS
+para el envío de facturas electrónicas.
+
+Para usar esta plantilla:
+1. Crea una cuenta en EmailJS (https://www.emailjs.com/)
+2. Crea un servicio de correo (Gmail, Outlook, etc.)
+3. Crea una plantilla y copia este código
+4. Configura las variables de entorno en tu archivo .env
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Factura Electrónica</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .header h1 {
+            color: #0066cc;
+            margin: 0;
+        }
+        .content {
+            padding: 10px 0;
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0066cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>{{from_name}}</h1>
+        </div>
+        
+        <div class="content">
+            <p>Estimado(a) {{to_name}},</p>
+            
+            <p>{{message}}</p>
+            
+            <p>Número de factura: <strong>{{invoice_number}}</strong></p>
+            
+            <p>Los archivos adjuntos incluyen:</p>
+            <ul>
+                <li>Factura en formato PDF</li>
+                <li>Factura en formato XML (para fines fiscales)</li>
+                {{#if include_acceptance_doc}}
+                <li>Documento de aceptación de Hacienda</li>
+                {{/if}}
+            </ul>
+            
+            <p>Si tiene alguna pregunta sobre esta factura, no dude en contactarnos.</p>
+        </div>
+        
+        <div class="footer">
+            <p>
+                Este correo es generado automáticamente, por favor no responda a este mensaje.<br>
+                {{from_name}} | Email: {{from_email}}
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FacturaElectronica xmlns="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.4/facturaElectronica" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xsi:schemaLocation="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.4/facturaElectronica schema.xsd">
+  <Clave>506260525010031029280799310247015973617521186966075</Clave>
+  <ProveedorSistemas>3102928079</ProveedorSistemas>
+  <CodigoActividadEmisor>741203</CodigoActividadEmisor>
+  <CodigoActividadReceptor>N/A</CodigoActividadReceptor>
+  <NumeroConsecutivo>01000010018130915881</NumeroConsecutivo>
+  <FechaEmision>2025-05-27T02:48:38.641Z</FechaEmision>
+  <Emisor>
+    <Nombre>INNOVA &amp; AI GROUP CR SOCIEDAD DE RESPONSABILIDAD LIMITADA</Nombre>
+    <Identificacion>
+      <Tipo>02</Tipo>
+      <Numero>3102928079</Numero>
+    </Identificacion>
+    <NombreComercial>Grupo InnovAI</NombreComercial>
+    <Ubicacion>
+      <Provincia>San José</Provincia>
+      <Canton>San José</Canton>
+      <Distrito>San Sebastian</Distrito>
+      <OtrasSenas>San Sebastian, San José, de la Iglesia Bautista 75 metros sur, 25 oeste, Avenida París</OtrasSenas>
+    </Ubicacion>
+    <Telefono>
+      <CodigoPais>506</CodigoPais>
+      <NumTelefono>88821455</NumTelefono>
+    </Telefono>
+    <CorreoElectronico>admin@innovaicr.com</CorreoElectronico>
+  </Emisor>
+  <Receptor>
+    <Nombre>KEVIN ALONSO UMAÑA TREJOS</Nombre>
+    <Identificacion>
+      <Tipo>01</Tipo>
+      <Numero>115550190</Numero>
+    </Identificacion>
+    <Ubicacion>
+      <Provincia>San José</Provincia>
+      <Canton>Vásquez de Coronado</Canton>
+      <Distrito>Patalillo</Distrito>
+      <OtrasSenas>Del Salón El Pará 300 metros noreste, 75 al sur, calle sin salida</OtrasSenas>
+    </Ubicacion>
+    <CorreoElectronico>kevin.umana.conta@gmail.com</CorreoElectronico>
+  </Receptor>
+  <CondicionVenta>01</CondicionVenta>
+  <PlazoCredito>15</PlazoCredito>
+  <DetalleServicio>
+    <LineaDetalle>
+      <NumeroLinea>1</NumeroLinea>
+      <CodigoCABYS>3563801010120</CodigoCABYS>
+      <CodigoComercial>
+        <Tipo>01</Tipo>
+        <Codigo>N/A</Codigo>
+      </CodigoComercial>
+      <Cantidad>4</Cantidad>
+      <UnidadMedida>Unid</UnidadMedida>
+      <TipoTransaccion>01</TipoTransaccion>
+      <Detalle>Amoxicilina genéricos</Detalle>
+      <FormaFarmaceutica>A</FormaFarmaceutica>
+      <RegistroMedicamento>N/A</RegistroMedicamento>
+      <PrecioUnitario>3.00000</PrecioUnitario>
+      <MontoTotal>12.00000</MontoTotal>
+      <SubTotal>12.00000</SubTotal>
+      <Impuesto>
+        <Codigo>01</Codigo>
+        <CodigoTarifa>02</CodigoTarifa>
+        <Tarifa>2.00</Tarifa>
+        <Monto>0.24000</Monto>
+      </Impuesto>
+      <ImpuestoNeto>0.24000</ImpuestoNeto>
+      <MontoTotalLinea>12.24000</MontoTotalLinea>
+    </LineaDetalle>
+  </DetalleServicio>
+  <ResumenFactura>
+    <CodigoTipoMoneda>
+      <CodigoMoneda>USD</CodigoMoneda>
+      <TipoCambio>511.06000</TipoCambio>
+    </CodigoTipoMoneda>
+    <TotalServGravados>12.00</TotalServGravados>
+    <TotalServExentos>0.00</TotalServExentos>
+    <TotalServExonerado>0.00</TotalServExonerado>
+    <TotalServNoSujeto>0.00</TotalServNoSujeto>
+    <TotalMercanciasGravadas>0.00</TotalMercanciasGravadas>
+    <TotalMercanciasExentas>0.00</TotalMercanciasExentas>
+    <TotalMercExonerada>0.00</TotalMercExonerada>
+    <TotalMercNoSujeta>0.00</TotalMercNoSujeta>
+    <TotalGravado>12.00</TotalGravado>
+    <TotalExento>0.00</TotalExento>
+    <TotalExonerado>0.00</TotalExonerado>
+    <TotalNoSujeto>0.00</TotalNoSujeto>
+    <TotalVenta>12.00</TotalVenta>
+    <TotalDescuentos>0.00</TotalDescuentos>
+    <TotalVentaNeta>12.00</TotalVentaNeta>
+    <TotalDesgloseImpuesto>
+      <Codigo>01</Codigo>
+      <CodigoTarifaIVA>08</CodigoTarifaIVA>
+      <TotalMontoImpuesto>0.24</TotalMontoImpuesto>
+    </TotalDesgloseImpuesto>
+    <TotalImpuesto>0.24</TotalImpuesto>
+    <TotalComprobante>12.24</TotalComprobante>
+  </ResumenFactura>
+  <MedioPago>
+    <TipoMedioPago>04</TipoMedioPago>
+  </MedioPago>
+  <Otros>
+    <OtroTexto>Testing Antibiotico Prueba</OtroTexto>
+  </Otros>
+</FacturaElectronica>

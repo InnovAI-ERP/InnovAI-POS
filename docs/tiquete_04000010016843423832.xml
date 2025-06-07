@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TiqueteElectronico xmlns="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.4/tiqueteElectronico" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xsi:schemaLocation="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.4/tiqueteElectronico schema.xsd">
+  <Clave>506270525040031029280791592795903669762999848521142</Clave>
+  <ProveedorSistemas>3102928079</ProveedorSistemas>
+  <CodigoActividadEmisor>741203</CodigoActividadEmisor>
+  <NumeroConsecutivo>04000010016843423832</NumeroConsecutivo>
+  <FechaEmision>2025-05-28T01:29:11.566Z</FechaEmision>
+  <Emisor>
+    <Nombre>INNOVA &amp; AI GROUP CR SOCIEDAD DE RESPONSABILIDAD LIMITADA</Nombre>
+    <Identificacion>
+      <Tipo>02</Tipo>
+      <Numero>3102928079</Numero>
+    </Identificacion>
+    <NombreComercial>Grupo InnovAI</NombreComercial>
+    <Ubicacion>
+      <Provincia>San José</Provincia>
+      <Canton>San José</Canton>
+      <Distrito>San Sebastian</Distrito>
+      <OtrasSenas>San Sebastian, San José, de la Iglesia Bautista 75 metros sur, 25 oeste, Avenida París</OtrasSenas>
+    </Ubicacion>
+    <Telefono>
+      <CodigoPais>506</CodigoPais>
+      <NumTelefono>88821455</NumTelefono>
+    </Telefono>
+    <CorreoElectronico>admin@innovaicr.com</CorreoElectronico>
+  </Emisor>
+  <Receptor>
+    <Nombre>Consumidor Final</Nombre>
+    <CorreoElectronico>admin@innovaicr.com</CorreoElectronico>
+  </Receptor>
+  <CondicionVenta>01</CondicionVenta>
+  <DetalleServicio>
+    <LineaDetalle>
+      <NumeroLinea>1</NumeroLinea>
+      <CodigoCABYS>3563801010120</CodigoCABYS>
+      <CodigoComercial>
+        <Tipo>01</Tipo>
+        <Codigo>N/A</Codigo>
+      </CodigoComercial>
+      <Cantidad>2</Cantidad>
+      <UnidadMedida>Unid</UnidadMedida>
+      <TipoTransaccion>01</TipoTransaccion>
+      <Detalle>Antibióticos genéricos</Detalle>
+      <FormaFarmaceutica>tabletas</FormaFarmaceutica>
+      <RegistroMedicamento>12512</RegistroMedicamento>
+      <PrecioUnitario>1265.00000</PrecioUnitario>
+      <MontoTotal>2530.00000</MontoTotal>
+      <SubTotal>2530.00000</SubTotal>
+      <Impuesto>
+        <Codigo>01</Codigo>
+        <CodigoTarifa>02</CodigoTarifa>
+        <Tarifa>2.00</Tarifa>
+        <Monto>50.60000</Monto>
+      </Impuesto>
+      <ImpuestoNeto>50.60000</ImpuestoNeto>
+      <MontoTotalLinea>2580.60000</MontoTotalLinea>
+    </LineaDetalle>
+    <LineaDetalle>
+      <NumeroLinea>2</NumeroLinea>
+      <CodigoCABYS>3563206040000</CodigoCABYS>
+      <CodigoComercial>
+        <Tipo>01</Tipo>
+        <Codigo>N/A</Codigo>
+      </CodigoComercial>
+      <Cantidad>1</Cantidad>
+      <UnidadMedida>Unid</UnidadMedida>
+      <TipoTransaccion>01</TipoTransaccion>
+      <Detalle>Vacunas n.c.p.</Detalle>
+      <FormaFarmaceutica>inyectable</FormaFarmaceutica>
+      <RegistroMedicamento>12345</RegistroMedicamento>
+      <PrecioUnitario>15000.00000</PrecioUnitario>
+      <MontoTotal>15000.00000</MontoTotal>
+      <SubTotal>15000.00000</SubTotal>
+      <Impuesto>
+        <Codigo>01</Codigo>
+        <CodigoTarifa>02</CodigoTarifa>
+        <Tarifa>2.00</Tarifa>
+        <Monto>300.00000</Monto>
+      </Impuesto>
+      <ImpuestoNeto>300.00000</ImpuestoNeto>
+      <MontoTotalLinea>15300.00000</MontoTotalLinea>
+    </LineaDetalle>
+  </DetalleServicio>
+  <ResumenFactura>
+    <CodigoTipoMoneda>
+      <CodigoMoneda>CRC</CodigoMoneda>
+      <TipoCambio>1.00000</TipoCambio>
+    </CodigoTipoMoneda>
+    <TotalServGravados>17530.00</TotalServGravados>
+    <TotalServExentos>0.00</TotalServExentos>
+    <TotalServExonerado>0.00</TotalServExonerado>
+    <TotalServNoSujeto>0.00</TotalServNoSujeto>
+    <TotalMercanciasGravadas>0.00</TotalMercanciasGravadas>
+    <TotalMercanciasExentas>0.00</TotalMercanciasExentas>
+    <TotalMercExonerada>0.00</TotalMercExonerada>
+    <TotalMercNoSujeta>0.00</TotalMercNoSujeta>
+    <TotalGravado>17530.00</TotalGravado>
+    <TotalExento>0.00</TotalExento>
+    <TotalExonerado>0.00</TotalExonerado>
+    <TotalNoSujeto>0.00</TotalNoSujeto>
+    <TotalVenta>17530.00</TotalVenta>
+    <TotalDescuentos>0.00</TotalDescuentos>
+    <TotalVentaNeta>17530.00</TotalVentaNeta>
+    <TotalDesgloseImpuesto>
+      <Codigo>01</Codigo>
+      <CodigoTarifaIVA>08</CodigoTarifaIVA>
+      <TotalMontoImpuesto>350.60</TotalMontoImpuesto>
+    </TotalDesgloseImpuesto>
+    <TotalImpuesto>350.60</TotalImpuesto>
+    <TotalComprobante>17880.60</TotalComprobante>
+  </ResumenFactura>
+  <MedioPago>
+    <TipoMedioPago>02</TipoMedioPago>
+  </MedioPago>
+  <Otros>
+    <OtroTexto>Testing Tiquete Farmacia</OtroTexto>
+  </Otros>
+</TiqueteElectronico>

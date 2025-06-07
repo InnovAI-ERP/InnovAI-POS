@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FacturaElectronica xmlns="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.4/facturaElectronica" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xsi:schemaLocation="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.4/facturaElectronica schema.xsd">
+  <Clave>50628052510031029280790101002000000000002941986506</Clave>
+  <ProveedorSistemas>3102928079</ProveedorSistemas>
+  <CodigoActividadEmisor>741203</CodigoActividadEmisor>
+  <CodigoActividadReceptor>552003</CodigoActividadReceptor>
+  <NumeroConsecutivo>01010020000000000029</NumeroConsecutivo>
+  <FechaEmision>2025-05-28T16:52:43.955Z</FechaEmision>
+  <Emisor>
+    <Nombre>INNOVA &amp; AI GROUP CR SOCIEDAD DE RESPONSABILIDAD LIMITADA</Nombre>
+    <Identificacion>
+      <Tipo>02</Tipo>
+      <Numero>3102928079</Numero>
+    </Identificacion>
+    <NombreComercial>Grupo InnovAI</NombreComercial>
+    <Ubicacion>
+      <Provincia>San José</Provincia>
+      <Canton>San José</Canton>
+      <Distrito>San Sebastian</Distrito>
+      <OtrasSenas>San Sebastian, San José, de la Iglesia Bautista 75 metros sur, 25 oeste, Avenida París</OtrasSenas>
+    </Ubicacion>
+    <Telefono>
+      <CodigoPais>506</CodigoPais>
+      <NumTelefono>88821455</NumTelefono>
+    </Telefono>
+    <CorreoElectronico>admin@innovaicr.com</CorreoElectronico>
+  </Emisor>
+  <Receptor>
+    <Nombre>GERMAN FABIAN FALLAS UREÑA</Nombre>
+    <Identificacion>
+      <Tipo>01</Tipo>
+      <Numero>114730746</Numero>
+    </Identificacion>
+    <Ubicacion>
+      <Provincia>San José</Provincia>
+      <Canton>Acosta</Canton>
+      <Distrito>San Ignacio</Distrito>
+      <OtrasSenas>200 metros oeste y 100 sur de la Escuela San Luis</OtrasSenas>
+    </Ubicacion>
+    <CorreoElectronico>f.fallas.u@gmail.com</CorreoElectronico>
+  </Receptor>
+  <CondicionVenta>01</CondicionVenta>
+  <DetalleServicio>
+    <LineaDetalle>
+      <NumeroLinea>1</NumeroLinea>
+      <CodigoCABYS>8733300000000</CodigoCABYS>
+      <CodigoComercial>
+        <Tipo>01</Tipo>
+        <Codigo>N/A</Codigo>
+      </CodigoComercial>
+      <Cantidad>1</Cantidad>
+      <UnidadMedida>Sp</UnidadMedida>
+      <TipoTransaccion>01</TipoTransaccion>
+      <Detalle>Servicios de instalación de maquinaria de oficina y contabilidad</Detalle>
+      <PrecioUnitario>52000.00000</PrecioUnitario>
+      <MontoTotal>52000.00000</MontoTotal>
+      <Descuento>
+        <MontoDescuento>2000.00000</MontoDescuento>
+        <NaturalezaDescuento>Descuento general</NaturalezaDescuento>
+      </Descuento>
+      <SubTotal>50000.00000</SubTotal>
+      <Impuesto>
+        <Codigo>01</Codigo>
+        <CodigoTarifa>08</CodigoTarifa>
+        <Tarifa>13.00</Tarifa>
+        <Monto>6500.00000</Monto>
+        <Exoneracion>
+          <TipoDocumento>03</TipoDocumento>
+          <NumeroDocumento>10020151513</NumeroDocumento>
+          <NombreInstitucion>Ley 9635</NombreInstitucion>
+          <FechaEmision>2025-05-28T16:52:43</FechaEmision>
+          <PorcentajeExoneracion>100.00</PorcentajeExoneracion>
+          <MontoExoneracion>6500.00000</MontoExoneracion>
+        </Exoneracion>
+      </Impuesto>
+      <ImpuestoNeto>6500.00000</ImpuestoNeto>
+      <MontoTotalLinea>56500.00000</MontoTotalLinea>
+    </LineaDetalle>
+  </DetalleServicio>
+  <ResumenFactura>
+    <CodigoTipoMoneda>
+      <CodigoMoneda>CRC</CodigoMoneda>
+      <TipoCambio>1.00000</TipoCambio>
+    </CodigoTipoMoneda>
+    <TotalServGravados>50000.00</TotalServGravados>
+    <TotalServExentos>0.00</TotalServExentos>
+    <TotalServExonerado>0.00</TotalServExonerado>
+    <TotalServNoSujeto>0.00</TotalServNoSujeto>
+    <TotalMercanciasGravadas>0.00</TotalMercanciasGravadas>
+    <TotalMercanciasExentas>0.00</TotalMercanciasExentas>
+    <TotalMercExonerada>0.00</TotalMercExonerada>
+    <TotalMercNoSujeta>0.00</TotalMercNoSujeta>
+    <TotalGravado>50000.00</TotalGravado>
+    <TotalExento>0.00</TotalExento>
+    <TotalExonerado>0.00</TotalExonerado>
+    <TotalNoSujeto>0.00</TotalNoSujeto>
+    <TotalVenta>52000.00</TotalVenta>
+    <TotalDescuentos>2000.00</TotalDescuentos>
+    <TotalVentaNeta>50000.00</TotalVentaNeta>
+    <TotalDesgloseImpuesto>
+      <Codigo>01</Codigo>
+      <CodigoTarifaIVA>08</CodigoTarifaIVA>
+      <TotalMontoImpuesto>6500.00</TotalMontoImpuesto>
+    </TotalDesgloseImpuesto>
+    <TotalImpuesto>6500.00</TotalImpuesto>
+    <TotalComprobante>50000.00</TotalComprobante>
+  </ResumenFactura>
+  <MedioPago>
+    <TipoMedioPago>04</TipoMedioPago>
+  </MedioPago>
+  <Otros>
+    <OtroTexto>testing exoneracion</OtroTexto>
+  </Otros>
+</FacturaElectronica>
