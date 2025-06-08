@@ -6,7 +6,8 @@ import { Plus, Trash2, Search, Save, Send, UserPlus, Package, PackagePlus, Eye, 
 import { useNavigate } from 'react-router-dom';
 import { buscarContribuyente, mapearTipoIdentificacion, validarEstadoContribuyente } from '../services/haciendaService';
 import { searchByDescription } from '../services/cabysService';
-import { generatePDF, generateXML, downloadXML, sendInvoiceXML, generateInvoiceKey, generateConsecutiveNumber, sendInvoiceByEmail } from '../services/invoiceService';
+import { generatePDF, generateXML, downloadXML, sendInvoiceXML, sendInvoiceByEmail } from '../services/invoiceService';
+import { generateSequence } from '../services/sequenceService';
 import { CabysItem, Invoice, availableCurrencies, tiposCargos } from '../types/invoice';
 import { useUserSettings } from '../hooks/useUserSettings';
 import { useClients } from '../hooks/useClients';
@@ -116,6 +117,8 @@ const InvoiceCreate = () => {
   const [selectedClient, setSelectedClient] = useState<any>(null);
   const [hasDraft, setHasDraft] = useState(false);
   const [isLoadingExchangeRate, setIsLoadingExchangeRate] = useState(false);
+  // Estado para almacenar la secuencia (clave y consecutivo) y generarla solo una vez
+  const [invoiceSequence, setInvoiceSequence] = useState<{ clave: string; numeroConsecutivo: string }>({ clave: '', numeroConsecutivo: '' });
 
   // Verificar si hay un borrador guardado al cargar
   useEffect(() => {
@@ -127,6 +130,35 @@ const InvoiceCreate = () => {
   const { settings, loading: loadingSettings } = useUserSettings();
   const { clients, loading: loadingClients, addClient } = useClients();
   const { addInvoice } = useInvoiceHistory();
+
+  // Función para generar consecutivo y clave utilizando sequenceService
+  const generateInvoiceSequence = async (emisorId: string) => {
+    try {
+      if (!invoiceSequence.clave || !invoiceSequence.numeroConsecutivo) {
+        console.log('Generando secuencia ÚNICA para la factura...');
+        const selectedCompanyId = localStorage.getItem('selected_company') || 'innova';
+        const sequence = await generateSequence(
+          selectedCompanyId,
+          emisorId,
+          '01', // Tipo de documento: factura electrónica
+          '01', // Terminal
+          '002' // Sucursal
+        );
+        console.log('Secuencia generada exitosamente:', sequence);
+        setInvoiceSequence(sequence);
+      }
+    } catch (error) {
+      console.error('Error al generar la secuencia:', error);
+    }
+  };
+
+  // Obtener la secuencia cuando se carguen los ajustes del usuario
+  useEffect(() => {
+    if (settings && !loadingSettings) {
+      const emisorId = settings.identification_number || '3102928079';
+      generateInvoiceSequence(emisorId);
+    }
+  }, [settings, loadingSettings]);
   
   // Default form values
   const defaultValues: InvoiceFormData = {
@@ -564,7 +596,7 @@ const InvoiceCreate = () => {
   };
   
   // Función para generar vista previa de la factura
-  const generatePreview = () => {
+  const generatePreview = async () => {
     // Verificar que haya al menos una línea de producto
     const formData = getValues();
     
@@ -578,6 +610,11 @@ const InvoiceCreate = () => {
     if (formData.moneda === 'CRC' && formData.tipoCambio !== 1) {
       alert('Para la moneda Colones (CRC), el tipo de cambio debe ser 1');
       return;
+    }
+
+    // Generar la secuencia si aún no existe
+    if (!invoiceSequence.clave || !invoiceSequence.numeroConsecutivo) {
+      await generateInvoiceSequence(formData.emisor.identificacion.numero);
     }
     
     // Calcular detalles de servicio con impuestos y totales
@@ -714,8 +751,8 @@ const InvoiceCreate = () => {
       },
       otros: formData.observaciones,
       // Add required fields for Invoice type, even for preview/draft
-      clave: "PREVIEW_DRAFT_KEY", // Placeholder for preview
-      numeroConsecutivo: "PREVIEW_DRAFT_CONSECUTIVE" // Placeholder for preview
+      clave: invoiceSequence.clave,
+      numeroConsecutivo: invoiceSequence.numeroConsecutivo
       // fechaEmision is already defined at the start of the preview object
     };
     
@@ -931,6 +968,11 @@ const InvoiceCreate = () => {
       alert('Los datos del receptor están incompletos');
       return;
     }
+
+    // Generar la secuencia si aún no existe
+    if (!invoiceSequence.clave || !invoiceSequence.numeroConsecutivo) {
+      await generateInvoiceSequence(data.emisor.identificacion.numero);
+    }
     
     // Declarar invoiceStatus en el ámbito correcto
     let invoiceStatus: 'Completada' | 'Pendiente' | 'Rechazada' = 'Pendiente';
@@ -1005,8 +1047,8 @@ const InvoiceCreate = () => {
       
       // Create invoice object
       const invoice: Invoice = {
-        clave: generateInvoiceKey(data.emisor.identificacion.numero),
-        numeroConsecutivo: generateConsecutiveNumber(),
+        clave: invoiceSequence.clave,
+        numeroConsecutivo: invoiceSequence.numeroConsecutivo,
         fechaEmision: new Date().toISOString(),
         emisor: data.emisor,
         receptor: data.receptor,
