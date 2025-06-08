@@ -152,6 +152,24 @@ export const generatePDF = (invoice: Invoice): jsPDF => {
 };
 
 /**
+ * Convierte un documento PDF en un Blob sin descargarlo.
+ * @param pdfDoc Documento PDF generado
+ * @returns Blob del PDF
+ */
+export const generatePdfBlob = (pdfDoc: jsPDF): Blob => {
+  try {
+    return pdfDoc.output('blob');
+  } catch (error) {
+    console.error('Error al convertir PDF a Blob:', error);
+    throw new Error(
+      `Error al convertir PDF a Blob: ${
+        error instanceof Error ? error.message : 'Error desconocido'
+      }`
+    );
+  }
+};
+
+/**
  * Descarga el PDF como archivo
  * @param pdfDoc Documento PDF generado
  * @param consecutivo Número consecutivo de la factura
