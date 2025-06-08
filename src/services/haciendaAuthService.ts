@@ -19,10 +19,10 @@ interface TokenResponse {
 export const getAccessToken = async (): Promise<TokenResponse> => {
   try {
     // Obtener credenciales desde las variables de entorno
-    const username = envService.get('VITE_HACIENDA_USERNAME');
-    const password = envService.get('VITE_HACIENDA_PASSWORD');
-    const clientId = envService.get('VITE_HACIENDA_CLIENT_ID');
-    const tokenUrl = envService.get('VITE_HACIENDA_TOKEN_URL');
+    const username = envService.get('HACIENDA_USERNAME');
+    const password = envService.get('HACIENDA_PASSWORD');
+    const clientId = envService.get('HACIENDA_CLIENT_ID');
+    const tokenUrl = envService.get('HACIENDA_TOKEN_URL');
 
     // Verificar que todas las credenciales están disponibles
     if (!username || !password || !clientId || !tokenUrl) {
@@ -75,8 +75,8 @@ export const getAccessToken = async (): Promise<TokenResponse> => {
 export const refreshAccessToken = async (refreshToken: string): Promise<TokenResponse> => {
   try {
     // Obtener credenciales desde las variables de entorno
-    const clientId = envService.get('VITE_HACIENDA_CLIENT_ID');
-    const tokenUrl = envService.get('VITE_HACIENDA_TOKEN_URL');
+    const clientId = envService.get('HACIENDA_CLIENT_ID');
+    const tokenUrl = envService.get('HACIENDA_TOKEN_URL');
 
     // Verificar que todas las credenciales están disponibles
     if (!refreshToken || !clientId || !tokenUrl) {
