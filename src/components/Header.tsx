@@ -1,6 +1,6 @@
 import { Menu, Search, Bell } from 'lucide-react';
 import { useState, useEffect } from 'react';
-// TODO: Install framer-motion package using: npm install framer-motion
+// Optional: install framer-motion to enable animations
 // import { AnimatePresence } from 'framer-motion';
 import UserMenu from './UserMenu';
 import ThemeToggle from './ThemeToggle';
