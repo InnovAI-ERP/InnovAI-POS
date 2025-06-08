@@ -131,6 +131,11 @@ export const generatePDF = (invoice: Invoice): jsPDF => {
       format: 'a4',
       compress: true
     });
+
+    // Mostrar la clave y el número consecutivo en la cabecera
+    doc.setFontSize(10);
+    doc.text(`Clave: ${invoice.clave}`, 10, 10);
+    doc.text(`Consecutivo: ${invoice.numeroConsecutivo}`, 10, 15);
     
     // Definir colores y estilos
     const primaryColor = '#007BFF';  // Color principal para títulos y encabezados

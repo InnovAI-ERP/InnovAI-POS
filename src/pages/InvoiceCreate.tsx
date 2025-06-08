@@ -131,31 +131,34 @@ const InvoiceCreate = () => {
   const { clients, loading: loadingClients, addClient } = useClients();
   const { addInvoice } = useInvoiceHistory();
 
-  // Generar la secuencia una sola vez al cargar el componente
-  useEffect(() => {
-    const getSequence = async () => {
-      try {
+  // Función para generar consecutivo y clave utilizando sequenceService
+  const generateInvoiceSequence = async (emisorId: string) => {
+    try {
+      if (!invoiceSequence.clave || !invoiceSequence.numeroConsecutivo) {
+        console.log('Generando secuencia ÚNICA para la factura...');
         const selectedCompanyId = localStorage.getItem('selected_company') || 'innova';
-        const userSettings = JSON.parse(localStorage.getItem('userSettings') || '{}');
-        const emisorId = userSettings?.emisor?.identificacion?.numero || '3102928079';
-
-        if (!invoiceSequence.clave || !invoiceSequence.numeroConsecutivo) {
-          const sequence = await generateSequence(
-            selectedCompanyId,
-            emisorId,
-            '01', // Tipo de documento: factura electrónica
-            '01', // Terminal
-            '002' // Sucursal
-          );
-          setInvoiceSequence(sequence);
-        }
-      } catch (error) {
-        console.error('Error al generar la secuencia:', error);
+        const sequence = await generateSequence(
+          selectedCompanyId,
+          emisorId,
+          '01', // Tipo de documento: factura electrónica
+          '01', // Terminal
+          '002' // Sucursal
+        );
+        console.log('Secuencia generada exitosamente:', sequence);
+        setInvoiceSequence(sequence);
       }
-    };
+    } catch (error) {
+      console.error('Error al generar la secuencia:', error);
+    }
+  };
 
-    getSequence();
-  }, [invoiceSequence.clave, invoiceSequence.numeroConsecutivo]);
+  // Obtener la secuencia cuando se carguen los ajustes del usuario
+  useEffect(() => {
+    if (settings && !loadingSettings) {
+      const emisorId = settings.identification_number || '3102928079';
+      generateInvoiceSequence(emisorId);
+    }
+  }, [settings, loadingSettings]);
   
   // Default form values
   const defaultValues: InvoiceFormData = {
@@ -593,7 +596,7 @@ const InvoiceCreate = () => {
   };
   
   // Función para generar vista previa de la factura
-  const generatePreview = () => {
+  const generatePreview = async () => {
     // Verificar que haya al menos una línea de producto
     const formData = getValues();
     
@@ -607,6 +610,11 @@ const InvoiceCreate = () => {
     if (formData.moneda === 'CRC' && formData.tipoCambio !== 1) {
       alert('Para la moneda Colones (CRC), el tipo de cambio debe ser 1');
       return;
+    }
+
+    // Generar la secuencia si aún no existe
+    if (!invoiceSequence.clave || !invoiceSequence.numeroConsecutivo) {
+      await generateInvoiceSequence(formData.emisor.identificacion.numero);
     }
     
     // Calcular detalles de servicio con impuestos y totales
@@ -959,6 +967,11 @@ const InvoiceCreate = () => {
       console.error('Error: Datos del receptor incompletos');
       alert('Los datos del receptor están incompletos');
       return;
+    }
+
+    // Generar la secuencia si aún no existe
+    if (!invoiceSequence.clave || !invoiceSequence.numeroConsecutivo) {
+      await generateInvoiceSequence(data.emisor.identificacion.numero);
     }
     
     // Declarar invoiceStatus en el ámbito correcto
