@@ -65,3 +65,17 @@ Sistema de facturación electrónica para Costa Rica con interfaz POS moderna y 
 - Implementación de políticas RLS para protección de datos
 - Certificados .p12 almacenados de forma segura
 
+## Integración con Hacienda
+
+El directorio `src/services` incluye ahora `haciendaApiService.ts` con
+utilidades para trabajar con el ambiente **Sandbox** de Hacienda:
+
+- Carga del certificado digital del usuario.
+- Solicitud y refresco de token utilizando las credenciales configuradas.
+- Generación de la clave numérica de los comprobantes.
+- Creación y firma de los XML de factura, tiquete y mensajes de aceptación.
+- Envío de los XML firmados al API de Hacienda.
+
+Estas funciones permiten probar el flujo completo de facturación
+electrónica desde el sistema POS.
+
