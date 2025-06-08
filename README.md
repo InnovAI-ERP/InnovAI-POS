@@ -64,3 +64,4 @@ Sistema de facturación electrónica para Costa Rica con interfaz POS moderna y 
 - Las credenciales de API se almacenan de forma segura y encriptada
 - Implementación de políticas RLS para protección de datos
 - Certificados .p12 almacenados de forma segura
+
