@@ -292,7 +292,7 @@ const Dashboard = () => {
                       type="monotone" 
                       dataKey="anterior" 
                       name="Mes anterior" 
-                      stroke="#00B9CC" 
+                      stroke="#7C3AED"
                       strokeWidth={2}
                       strokeDasharray="5 5" 
                     />
