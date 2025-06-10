@@ -69,8 +69,244 @@ export const generateXML = (invoice: Invoice): string => {
     rootNode.ele('NumeroConsecutivo').txt(invoice.numeroConsecutivo);
     rootNode.ele('FechaEmision').txt(invoice.fechaEmision);
 
-    // Esta es una versión inicial. Completaré el resto de la generación de XML en próximas actualizaciones.
-    
+    // ---- Emisor -----------------------------------------------------
+    const emisor = rootNode.ele('Emisor');
+    emisor.ele('Nombre').txt(invoice.emisor.nombre);
+    const idEmisor = emisor.ele('Identificacion');
+    idEmisor.ele('Tipo').txt(invoice.emisor.identificacion.tipo);
+    idEmisor.ele('Numero').txt(invoice.emisor.identificacion.numero);
+    if (invoice.emisor.nombreComercial) {
+      emisor.ele('NombreComercial').txt(invoice.emisor.nombreComercial);
+    }
+    if (invoice.emisor.ubicacion) {
+      const ubi = emisor.ele('Ubicacion');
+      if (invoice.emisor.ubicacion.provincia)
+        ubi.ele('Provincia').txt(invoice.emisor.ubicacion.provincia);
+      if (invoice.emisor.ubicacion.canton)
+        ubi.ele('Canton').txt(invoice.emisor.ubicacion.canton);
+      if (invoice.emisor.ubicacion.distrito)
+        ubi.ele('Distrito').txt(invoice.emisor.ubicacion.distrito);
+      if (invoice.emisor.ubicacion.barrio)
+        ubi.ele('Barrio').txt(invoice.emisor.ubicacion.barrio);
+      if (invoice.emisor.ubicacion.otrasSenas)
+        ubi.ele('OtrasSenas').txt(invoice.emisor.ubicacion.otrasSenas);
+    }
+    if (invoice.emisor.telefono) {
+      const tel = emisor.ele('Telefono');
+      tel.ele('CodigoPais').txt(invoice.emisor.telefono.codigoPais);
+      tel.ele('NumTelefono').txt(invoice.emisor.telefono.numTelefono);
+    }
+    if (invoice.emisor.correo) {
+      emisor.ele('CorreoElectronico').txt(invoice.emisor.correo);
+    }
+
+    // ---- Receptor ---------------------------------------------------
+    const receptor = rootNode.ele('Receptor');
+    receptor.ele('Nombre').txt(invoice.receptor.nombre);
+    const idReceptor = receptor.ele('Identificacion');
+    idReceptor.ele('Tipo').txt(invoice.receptor.identificacion.tipo);
+    idReceptor.ele('Numero').txt(invoice.receptor.identificacion.numero);
+    if (invoice.receptor.nombreComercial) {
+      receptor.ele('NombreComercial').txt(invoice.receptor.nombreComercial);
+    }
+    if (invoice.receptor.ubicacion) {
+      const ubiR = receptor.ele('Ubicacion');
+      if (invoice.receptor.ubicacion.provincia)
+        ubiR.ele('Provincia').txt(invoice.receptor.ubicacion.provincia);
+      if (invoice.receptor.ubicacion.canton)
+        ubiR.ele('Canton').txt(invoice.receptor.ubicacion.canton);
+      if (invoice.receptor.ubicacion.distrito)
+        ubiR.ele('Distrito').txt(invoice.receptor.ubicacion.distrito);
+      if (invoice.receptor.ubicacion.barrio)
+        ubiR.ele('Barrio').txt(invoice.receptor.ubicacion.barrio);
+      if (invoice.receptor.ubicacion.otrasSenas)
+        ubiR.ele('OtrasSenas').txt(invoice.receptor.ubicacion.otrasSenas);
+    }
+    if (invoice.receptor.telefono) {
+      const telR = receptor.ele('Telefono');
+      telR.ele('CodigoPais').txt(invoice.receptor.telefono.codigoPais);
+      telR.ele('NumTelefono').txt(invoice.receptor.telefono.numTelefono);
+    }
+    if (invoice.receptor.correo) {
+      receptor.ele('CorreoElectronico').txt(invoice.receptor.correo);
+    }
+
+    // ---- Condicion de venta y medio de pago -------------------------
+    rootNode.ele('CondicionVenta').txt(invoice.condicionVenta);
+    if (invoice.condicionVenta === '99' && invoice.condicionVentaOtros) {
+      rootNode.ele('CondicionVentaOtros').txt(invoice.condicionVentaOtros);
+    }
+    if (invoice.plazoCredito) {
+      rootNode.ele('PlazoCredito').txt(String(invoice.plazoCredito));
+    }
+
+    // ---- Detalle de servicio ---------------------------------------
+    const detalleServicio = rootNode.ele('DetalleServicio');
+    invoice.detalleServicio.forEach(item => {
+      const linea = detalleServicio.ele('LineaDetalle');
+      linea.ele('NumeroLinea').txt(String(item.id));
+      if (item.codigoCabys) {
+        linea.ele('CodigoCABYS').txt(item.codigoCabys);
+      }
+      if (item.codigo) {
+        const cc = linea.ele('CodigoComercial');
+        cc.ele('Tipo').txt('01');
+        cc.ele('Codigo').txt(item.codigo);
+      }
+      linea.ele('Cantidad').txt(item.cantidad.toString());
+      linea.ele('UnidadMedida').txt(item.unidadMedida);
+      if (item.tipoTransaccion) {
+        linea.ele('TipoTransaccion').txt(item.tipoTransaccion);
+      }
+      if (item.unidadMedidaComercial) {
+        linea.ele('UnidadMedidaComercial').txt(item.unidadMedidaComercial);
+      }
+      linea.ele('Detalle').txt(item.detalle);
+      if (item.numeroVINoSerie) {
+        linea.ele('NumeroVINoSerie').txt(item.numeroVINoSerie);
+      }
+      if (item.registroMedicamento) {
+        linea.ele('RegistroMedicamento').txt(item.registroMedicamento);
+      }
+      if (item.formaFarmaceutica) {
+        linea.ele('FormaFarmaceutica').txt(item.formaFarmaceutica);
+      }
+      linea.ele('PrecioUnitario').txt(item.precioUnitario.toFixed(5));
+      linea.ele('MontoTotal').txt(item.montoTotal.toFixed(5));
+      if (item.descuento) {
+        const d = linea.ele('Descuento');
+        d.ele('MontoDescuento').txt(item.descuento.montoDescuento.toFixed(5));
+        if (item.descuento.naturalezaDescuento) {
+          d.ele('NaturalezaDescuento').txt(item.descuento.naturalezaDescuento);
+        }
+      }
+      linea.ele('SubTotal').txt(item.subtotal.toFixed(5));
+      if (item.baseImponible !== undefined) {
+        linea.ele('BaseImponible').txt(item.baseImponible.toFixed(5));
+      }
+      if (item.impuesto) {
+        const imp = linea.ele('Impuesto');
+        imp.ele('Codigo').txt(item.impuesto.codigo);
+        imp.ele('CodigoTarifa').txt(item.impuesto.codigoTarifa);
+        imp.ele('Tarifa').txt(item.impuesto.tarifa.toFixed(2));
+        imp.ele('Monto').txt(item.impuesto.monto.toFixed(5));
+        if (item.impuesto.exoneracion) {
+          const exo = imp.ele('Exoneracion');
+          if (item.impuesto.exoneracion.tipoDocumento)
+            exo.ele('TipoDocumento').txt(item.impuesto.exoneracion.tipoDocumento);
+          if (item.impuesto.exoneracion.numeroDocumento)
+            exo.ele('NumeroDocumento').txt(item.impuesto.exoneracion.numeroDocumento);
+          if (item.impuesto.exoneracion.nombreInstitucion)
+            exo.ele('NombreInstitucion').txt(item.impuesto.exoneracion.nombreInstitucion);
+          if (item.impuesto.exoneracion.fechaEmision)
+            exo.ele('FechaEmision').txt(item.impuesto.exoneracion.fechaEmision);
+          if (item.impuesto.exoneracion.porcentajeExoneracion !== undefined)
+            exo.ele('PorcentajeExoneracion').txt(item.impuesto.exoneracion.porcentajeExoneracion.toString());
+          if (item.impuesto.exoneracion.montoExoneracion !== undefined)
+            exo.ele('MontoExoneracion').txt(item.impuesto.exoneracion.montoExoneracion.toFixed(5));
+        }
+      }
+      linea.ele('ImpuestoNeto').txt(item.impuestoNeto.toFixed(5));
+      linea.ele('MontoTotalLinea').txt(item.montoTotalLinea.toFixed(5));
+    });
+
+    // ---- Otros Cargos (opcional) -----------------------------------
+    if (invoice.otrosCargos) {
+      invoice.otrosCargos.forEach(cargo => {
+        const oc = rootNode.ele('OtrosCargos');
+        oc.ele('TipoDocumentoOC').txt(cargo.tipoCargo);
+        if (cargo.descripcionCargo) oc.ele('Detalle').txt(cargo.descripcionCargo);
+        if (cargo.porcentaje !== undefined) oc.ele('PorcentajeOC').txt(cargo.porcentaje.toString());
+        oc.ele('MontoCargo').txt(cargo.montoCargo.toFixed(5));
+      });
+    }
+
+    // ---- Resumen de factura ---------------------------------------
+    const resumen = rootNode.ele('ResumenFactura');
+    const moneda = resumen.ele('CodigoTipoMoneda');
+    moneda.ele('CodigoMoneda').txt(invoice.resumenFactura.codigoMoneda);
+    if (invoice.resumenFactura.tipoCambio !== undefined) {
+      moneda.ele('TipoCambio').txt(invoice.resumenFactura.tipoCambio.toFixed(5));
+    }
+    resumen.ele('TotalServGravados').txt(invoice.resumenFactura.totalServGravados.toFixed(2));
+    resumen.ele('TotalServExentos').txt(invoice.resumenFactura.totalServExentos.toFixed(2));
+    if (invoice.resumenFactura.totalServExonerado !== undefined) {
+      resumen.ele('TotalServExonerado').txt(invoice.resumenFactura.totalServExonerado.toFixed(2));
+    }
+    if (invoice.resumenFactura.totalServNoSujeto !== undefined) {
+      resumen.ele('TotalServNoSujeto').txt(invoice.resumenFactura.totalServNoSujeto.toFixed(2));
+    }
+    resumen.ele('TotalMercanciasGravadas').txt(invoice.resumenFactura.totalMercGravada.toFixed(2));
+    resumen.ele('TotalMercanciasExentas').txt(invoice.resumenFactura.totalMercExenta.toFixed(2));
+    if (invoice.resumenFactura.totalMercExonerada !== undefined) {
+      resumen.ele('TotalMercExonerada').txt(invoice.resumenFactura.totalMercExonerada.toFixed(2));
+    }
+    if (invoice.resumenFactura.totalMercNoSujeta !== undefined) {
+      resumen.ele('TotalMercNoSujeta').txt(invoice.resumenFactura.totalMercNoSujeta.toFixed(2));
+    }
+    resumen.ele('TotalGravado').txt(invoice.resumenFactura.totalGravado.toFixed(2));
+    resumen.ele('TotalExento').txt(invoice.resumenFactura.totalExento.toFixed(2));
+    if (invoice.resumenFactura.totalExonerado !== undefined) {
+      resumen.ele('TotalExonerado').txt(invoice.resumenFactura.totalExonerado.toFixed(2));
+    }
+    if (invoice.resumenFactura.totalNoSujeto !== undefined) {
+      resumen.ele('TotalNoSujeto').txt(invoice.resumenFactura.totalNoSujeto.toFixed(2));
+    }
+    resumen.ele('TotalVenta').txt(invoice.resumenFactura.totalVenta.toFixed(2));
+    resumen.ele('TotalDescuentos').txt(invoice.resumenFactura.totalDescuentos.toFixed(2));
+    resumen.ele('TotalVentaNeta').txt(invoice.resumenFactura.totalVentaNeta.toFixed(2));
+    if (invoice.resumenFactura.totalOtrosImpuestos !== undefined) {
+      resumen.ele('TotalOtrosImpuestos').txt(invoice.resumenFactura.totalOtrosImpuestos.toFixed(2));
+    }
+    resumen.ele('TotalImpuesto').txt(invoice.resumenFactura.totalImpuesto.toFixed(2));
+    resumen.ele('TotalComprobante').txt(invoice.resumenFactura.totalComprobante.toFixed(2));
+
+    // ---- Medios de pago --------------------------------------------
+    invoice.medioPago.forEach((mp, idx) => {
+      const mpNode = rootNode.ele('MedioPago');
+      mpNode.ele('TipoMedioPago').txt(mp);
+      if (invoice.medioPagoOtros && mp === '99') {
+        mpNode.ele('MedioPagoOtros').txt(invoice.medioPagoOtros);
+      }
+      if (invoice.totalMedioPago && invoice.totalMedioPago[idx] !== undefined) {
+        mpNode.ele('TotalMedioPago').txt(invoice.totalMedioPago[idx].toFixed(2));
+      }
+    });
+
+    // ---- Información de referencia (opcional) ----------------------
+    if (invoice.informacionReferencia) {
+      invoice.informacionReferencia.forEach(ref => {
+        const refNode = rootNode.ele('InformacionReferencia');
+        refNode.ele('TipoDocIR').txt(ref.tipoDoc);
+        if (ref.tipoDoc === '99' && ref.tipoDocOtros) {
+          refNode.ele('TipoDocRefOTRO').txt(ref.tipoDocOtros);
+        }
+        refNode.ele('Numero').txt(ref.numero);
+        refNode.ele('FechaEmisionIR').txt(ref.fechaEmision);
+        refNode.ele('Codigo').txt(ref.codigo);
+        if (ref.codigo === '99' && ref.razonOtros) {
+          refNode.ele('CodigoReferenciaOTRO').txt(ref.razonOtros);
+        }
+        refNode.ele('Razon').txt(ref.razon);
+      });
+    }
+
+    // ---- Otros -----------------------------------------------------
+    if (invoice.otros) {
+      const otrosNode = rootNode.ele('Otros');
+      if (typeof invoice.otros === 'string') {
+        otrosNode.ele('OtroTexto').txt(invoice.otros);
+      } else if (Array.isArray(invoice.otros)) {
+        invoice.otros.forEach(o => {
+          if (o.tipo === 'texto') otrosNode.ele('OtroTexto').txt(o.contenido);
+          else otrosNode.ele('OtroContenido').txt(o.contenido);
+        });
+      } else {
+        if (invoice.otros.textos) invoice.otros.textos.forEach(t => otrosNode.ele('OtroTexto').txt(t));
+        if (invoice.otros.contenidos) invoice.otros.contenidos.forEach(c => otrosNode.ele('OtroContenido').txt(c));
+      }
+    }
+
     return doc.end({ prettyPrint: true });
   } catch (error) {
     console.error('Error al generar XML:', error);
