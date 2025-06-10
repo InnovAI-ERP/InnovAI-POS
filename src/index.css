@@ -5,8 +5,8 @@
 @tailwind utilities;
 
 :root {
-  --primary: #00B9CC;
-  --secondary: #00B9FF;
+  --primary: #7C3AED;
+  --secondary: #3B82F6;
   --dark: #121212;
   --glow-color: #FF9F43; /* Color naranja para el efecto glow */
 }
@@ -20,8 +20,8 @@
 /* Variables para tema oscuro */
 @media (prefers-color-scheme: dark) {
   :root {
-    --card-shadow: 0 0 15px rgba(0, 185, 204, 0.3); /* Sombra turquesa para modo oscuro */
-    --card-shadow-hover: 0 0 20px rgba(0, 185, 204, 0.5); /* Sombra turquesa hover para modo oscuro */
+    --card-shadow: 0 0 15px rgba(124, 58, 237, 0.3); /* Sombra púrpura para modo oscuro */
+    --card-shadow-hover: 0 0 20px rgba(124, 58, 237, 0.5); /* Sombra púrpura hover para modo oscuro */
   }
 }
 
@@ -131,10 +131,10 @@ body {
 /* Animations */
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 15px rgba(0, 185, 204, 0.5);
+    box-shadow: 0 0 15px rgba(124, 58, 237, 0.5);
   }
   50% {
-    box-shadow: 0 0 30px rgba(0, 185, 204, 0.8);
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.8);
   }
 }
 
