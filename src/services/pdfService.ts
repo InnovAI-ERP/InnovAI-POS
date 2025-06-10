@@ -122,33 +122,72 @@ export const generatePDF = (invoice: Invoice): jsPDF => {
     const isTiquete = invoice.numeroConsecutivo.startsWith('04');
     console.log(`Generando PDF para ${isTiquete ? 'tiquete' : 'factura'} con consecutivo: ${invoice.numeroConsecutivo}`);
     
-    // Create a new jsPDF instance
-    // Nota: Usar orientación portrait para facturas normales y landscape para facturas con muchas líneas
-    // Tamaño de página A4
-    const doc = new jsPDF({
-      orientation: 'portrait',
-      unit: 'mm',
-      format: 'a4',
-      compress: true
+    const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4', compress: true });
+
+    // Encabezado simple con datos básicos
+    doc.setFontSize(12);
+    doc.text(isTiquete ? 'Tiquete Electrónico' : 'Factura Electrónica', 105, 10, { align: 'center' });
+    doc.setFontSize(9);
+    doc.text(`Clave: ${invoice.clave}`, 10, 15);
+    doc.text(`Consecutivo: ${invoice.numeroConsecutivo}`, 10, 20);
+    doc.text(`Fecha emisión: ${format(new Date(invoice.fechaEmision), 'yyyy-MM-dd HH:mm')}`, 10, 25);
+
+    // Datos del emisor
+    let posY = 32;
+    doc.setFontSize(10);
+    doc.text('Emisor:', 10, posY);
+    posY += 5;
+    doc.setFontSize(9);
+    doc.text(`${invoice.emisor.nombre}`, 10, posY);
+    posY += 4;
+    doc.text(`Identificación: ${invoice.emisor.identificacion.tipo}-${invoice.emisor.identificacion.numero}`, 10, posY);
+    if (invoice.emisor.nombreComercial) {
+      posY += 4;
+      doc.text(`Nombre Comercial: ${invoice.emisor.nombreComercial}`, 10, posY);
+    }
+
+    // Datos del receptor
+    posY += 8;
+    doc.setFontSize(10);
+    doc.text('Receptor:', 10, posY);
+    posY += 5;
+    doc.setFontSize(9);
+    doc.text(`${invoice.receptor.nombre}`, 10, posY);
+    posY += 4;
+    doc.text(`Identificación: ${invoice.receptor.identificacion.tipo}-${invoice.receptor.identificacion.numero}`, 10, posY);
+
+    // Tabla de productos/servicios
+    const tableData = invoice.detalleServicio.map(item => [
+      item.id.toString(),
+      item.detalle,
+      item.cantidad.toString(),
+      formatCurrency(item.precioUnitario, invoice.resumenFactura.codigoMoneda),
+      formatCurrency(item.impuestoNeto, invoice.resumenFactura.codigoMoneda),
+      formatCurrency(item.montoTotalLinea, invoice.resumenFactura.codigoMoneda)
+    ]);
+
+    (doc as any).autoTable({
+      startY: posY + 8,
+      head: [['#', 'Detalle', 'Cant', 'P.Unit', 'Impuesto', 'Total']],
+      body: tableData,
+      theme: 'grid',
+      styles: { fontSize: 8 }
     });
 
-    // Mostrar la clave y el número consecutivo en la cabecera
+    let finalY = (doc as any).lastAutoTable.finalY || posY + 8;
+
+    // Totales
+    finalY += 5;
     doc.setFontSize(10);
-    doc.text(`Clave: ${invoice.clave}`, 10, 10);
-    doc.text(`Consecutivo: ${invoice.numeroConsecutivo}`, 10, 15);
-    
-    // Definir colores y estilos
-    const primaryColor = '#007BFF';  // Color principal para títulos y encabezados
-    const secondaryColor = '#6C757D';  // Color secundario para textos menos importantes
-    const borderColor = '#DEE2E6';  // Color de bordes
-    const successColor = '#28A745';  // Color para importes positivos o estados exitosos
-    
-    // Añadir la lógica para generar el PDF completo con todos los datos de la factura
-    
-    // Cabecera con logos y título
-    // Esta es una versión inicial del servicio de generación de PDF.
-    // Se implementará la generación completa del documento en una actualización posterior.
-    
+    doc.text('Totales', 150, finalY);
+    finalY += 4;
+    doc.setFontSize(9);
+    doc.text(`Total Venta Neta: ${formatCurrency(invoice.resumenFactura.totalVentaNeta, invoice.resumenFactura.codigoMoneda)}`, 120, finalY);
+    finalY += 4;
+    doc.text(`Total Impuesto: ${formatCurrency(invoice.resumenFactura.totalImpuesto, invoice.resumenFactura.codigoMoneda)}`, 120, finalY);
+    finalY += 4;
+    doc.text(`Total Comprobante: ${formatCurrency(invoice.resumenFactura.totalComprobante, invoice.resumenFactura.codigoMoneda)}`, 120, finalY);
+
     return doc;
   } catch (error) {
     console.error('Error al generar PDF:', error);
